@@ -1,0 +1,2 @@
+inputs file
+directory => rmdir $MATCHED ;

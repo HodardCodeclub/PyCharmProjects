@@ -1,0 +1,1 @@
+inputs filestart           =>  {count = 0} ;/\w*.o$/ && file  =>  rm -f $MATCHED ; echo $MATCHED ; {count = count+1} ;finish          =>  {print(str(count))} ;

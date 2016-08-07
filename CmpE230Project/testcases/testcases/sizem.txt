@@ -1,0 +1,2 @@
+inputs file
+s/5/m => rm -rf $MATCHED ;

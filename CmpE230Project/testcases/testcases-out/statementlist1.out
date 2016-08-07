@@ -1,0 +1,9 @@
+Abim.txt
+Alam.txt
+exists testdir/Bbim.txt
+exists testdir/akabe.txt
+exists testdir/Alalar
+exists testdir/Aloha
+notexist testdir/Abim.txt
+notexist testdir/Alam.txt
+

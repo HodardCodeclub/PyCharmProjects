@@ -1,0 +1,2 @@
+inputs file
+p/444/ => rm -rf $MATCHED ;

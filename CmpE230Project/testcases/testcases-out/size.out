@@ -1,0 +1,5 @@
+notexist testdir/kemal.doc
+notexist testdir/temel.doc
+exists testdir/okan.txt
+exists testdir/kamuran.doc
+exists testdir/binnur.txt

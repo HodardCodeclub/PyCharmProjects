@@ -1,0 +1,1 @@
+inputs file(/^core$/ || /\w*.o$/ ) && file => rm $MATCHED ;/junk/  && directory => rmdir $MATCHED ;o/veli/ && file => chown okan $MATCHED ;

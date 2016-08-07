@@ -1,0 +1,5 @@
+notexist testdir/kemal
+notexist testdir/temel
+notexist testdir/okan
+exists testdir/kamuran
+exists testdir/binnur

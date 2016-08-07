@@ -1,0 +1,2 @@
+inputs file
+writeable => rm -rf $MATCHED ;

@@ -1,0 +1,3 @@
+inputs file
+start => echo hello ;
+finish => echo world ;

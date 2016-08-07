@@ -1,0 +1,2 @@
+inputs file
+file => rm $MATCHED ;

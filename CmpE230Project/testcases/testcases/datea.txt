@@ -1,0 +1,2 @@
+inputs file
+d/01-07-2015/a => rm -rf $MATCHED ;

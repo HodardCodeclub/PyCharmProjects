@@ -1,0 +1,14 @@
+oaksd.o
+oaksf.o
+ohello.o
+deli.o
+ubuntu.o
+5
+notexist testdir/oaksd.o
+notexist testdir/oaksf.o
+notexist testdir/ohello.o
+notexist testdir/deli.o
+notexist testdir/ubuntu.o
+exists testdir/oaksd
+exists testdir/asdf
+exists testdir/vali.o

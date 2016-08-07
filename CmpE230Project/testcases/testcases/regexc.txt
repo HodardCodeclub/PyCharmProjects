@@ -1,0 +1,2 @@
+inputs file
+c/\w*.txt$/ => rm -rf $MATCHED ;

@@ -1,0 +1,3 @@
+inputs file
+options -i i-0e016202c67506edd
+file => echo $MATCHED ;

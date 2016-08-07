@@ -1,0 +1,3 @@
+inputs file
+options -b
+(file || directory) => echo $MATCHED ;

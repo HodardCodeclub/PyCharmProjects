@@ -1,0 +1,2 @@
+inputs file 
+/^A/ && file  && d/01-04-2002/b =>  echo $MATCHED ; rm $MATCHED ;

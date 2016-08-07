@@ -1,0 +1,3 @@
+inputs file
+options -f
+/papers/ => echo $MATCHED ;

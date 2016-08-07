@@ -1,0 +1,6 @@
+notexist testdir/core
+exists testdir/okan.o
+notexist testdir/mycode.o
+notexist testdir/junk
+exists testdir/somefile
+owner testdir/somefile okan
