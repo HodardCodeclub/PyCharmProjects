@@ -1,0 +1,40 @@
+CmpE 230 Homework 3 - FDSM
+Abdullah Furkan İlısu -2013400201
+Mustafa Melih Mutlu - 2013400189
+
+----------------------------------
+How to run :
+
+	python ./main fdsm [ -b ] [-f] [-s <statementsfile>] [-i <instance>] [<directory>]
+
+----------------------------------
+1) main.py:
+  parse():
+    we use getopt.getopt() function to parse arguments and options which are given from terminal when run main.py with fdsm
+  if -s option missed, take input from standart input by sys.stdin
+  for full path option -f we use os.getcwd() then get current absolute path
+  then with -b option we decide traverse type -> dirTraverse_DFS and dirTraverse_BFS
+
+  exec() to run python code
+  subprocess.call() to run unix command
+
+2) parser.py:
+  pattern = re.compile(rexp)
+  res = pattern.search()
+  nameCheck() -> /../
+  ownerCheck() -> o/../
+  contentCheck() -> c/../
+  permCheck() -> p/../
+  dateCheck() -> d/../
+  sizeCheck() -> s/../
+  st = os.stat(filename)
+	file_name = re.search(r'/(.*$)', filename).groups()[0]
+	file_owner = pwd.getpwuid(st.st_uid).pw_name
+	file_size = st.st_size
+	file_access = oct(stat.S_IMODE(st.st_mode))[1:]
+	_readable = os.access(filename, os.R_OK)
+	_writeable =  os.access(filename, os.W_OK)
+	_executable = os.access(filename, os.X_OK)
+	#last_modified = time.ctime(os.path.getmtime(filename))
+	mod_time = time.strftime('%d/%m/%Y', time.gmtime(os.path.getmtime(filename)))
+	file_lmod = time.strptime(mod_time, '%d/%m/%Y')
