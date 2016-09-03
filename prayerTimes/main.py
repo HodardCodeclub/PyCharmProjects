@@ -4,8 +4,9 @@
 import requests
 from bs4 import BeautifulSoup
 import sys, os
+from django.utils.encoding import smart_str, smart_unicode
 
-url = 'http://www.diyanet.gov.tr/en/PrayerTime/PrayerTimesList'
+url = 'http://www.diyanet.gov.tr/tr/PrayerTime/PrayerTimesList'
 
 country = 2     #default country => Turkey
 state = 500     #default state => Adana
@@ -45,7 +46,7 @@ def getCountries():
         if sel != None:
             for opt in sel.find_all('option'):
                 if opt.text != "" and opt.get('value') != "":
-                    f.write(opt.text + ": " + str(opt.get('value')) + "\n")
+                    f.write(smart_str(opt.text) + ": " + smart_str(opt.get('value')) + "\n")
 
     f.close()
 
@@ -72,7 +73,7 @@ def getStates():
         if sel != None:
             for opt in sel.find_all('option'):
                 if opt.text != "" and opt.get('value') != "":
-                    f.write(opt.text + ": " + str(opt.get('value')) + "\n")
+                    f.write(smart_str(opt.text) + ": " + smart_str(opt.get('value')) + "\n")
 
     f.close()
 
@@ -99,7 +100,7 @@ def getDistricts():
         if sel != None:
             for opt in sel.find_all('option'):
                 if opt.text != "" and opt.get('value') != "":
-                    f.write(opt.text + ": " + str(opt.get('value')) + "\n")
+                    f.write(smart_str(opt.text) + ": " + smart_str(opt.get('value')) + "\n")
     f.close()
 
 def selectDistrict():
@@ -149,7 +150,7 @@ def getPrayerTimes(params):
     for tbody in soup.find_all('tbody'):
         tr = tbody.find_all('tr')
         for td in tr:
-            f.write(td.text + '\n')
+            f.write(smart_str(td.text) + '\n')
             f.write("\n-------------\n\n")
 
 if __name__ == '__main__':
