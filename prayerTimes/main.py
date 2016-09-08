@@ -5,6 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import sys, os
 from django.utils.encoding import smart_str, smart_unicode
+import json
 
 url = 'http://www.diyanet.gov.tr/tr/PrayerTime/PrayerTimesList'
 
@@ -32,6 +33,7 @@ def start():
     selectPeriod()
     parameters.update({'period': period})
     getPrayerTimes(parameters)
+    getQiblaAngle(parameters)
 
 def getCountries():
     params = {}
@@ -153,5 +155,61 @@ def getPrayerTimes(params):
             f.write(smart_str(td.text) + '\n')
             f.write("\n-------------\n\n")
 
+def getQiblaAngle(params):
+    url = "http://www.diyanet.gov.tr/tr/namazvakitleri"
+    r = requests.post(url, data=params)
+    page = r.text
+
+    soup = BeautifulSoup(page)
+    qiblaAngle = soup.find('span', {'id': 'spkibleAcisi'})
+    qiblaTime = soup.find('span', {'id': 'spKibleSaati'})
+    #print qiblaAngle
+    #print  qiblaTime
+    print "QiblaAngle: " + str(qiblaAngle.text)
+    print "QiblaTime: " + str(qiblaTime.text)
+
+def newGetStates():
+    params = {'countryCode' : 2}
+    url = "http://www.diyanet.gov.tr/tr//PrayerTime/FillState"
+    response = requests.post(url, data=params)
+    json_data = json.loads(response.text)
+
+    for state in json_data:
+        print state['Text'] + ": " + state['Value']
+
+def newGetDistricts():
+    params = {'itemId': 552}
+    url = "http://www.diyanet.gov.tr/tr//PrayerTime/FillCity"
+    response = requests.post(url, data=params)
+    json_data = json.loads(response.text)
+
+    for state in json_data:
+        print state['Text'] + ": " + state['Value']
+
+def newGetPrayerTimes():
+    params = {'countryName': 2, 'stateName': 552, 'name': 9676}
+    url = "http://www.diyanet.gov.tr/tr//PrayerTime/PrayerTimesSet"
+    response = requests.post(url, data=params)
+    json_data = json.loads(response.text)
+
+    print "UlkeAdi: " + json_data['UlkeAdi']
+    print "SehirAdi: " + json_data['SehirAdi']
+    print "MiladiTarih: " + json_data['MiladiTarih']
+    print "HicriTarih: " + json_data['HicriTarih']
+    print "Imsak: " + json_data['Imsak']
+    print "Gunes: " + json_data['Gunes']
+    print "Ogle: " + json_data['Ogle']
+    print "Ikindi: " + json_data['Ikindi']
+    print "Aksam: " + json_data['Aksam']
+    print "Yatsi: " + json_data['Yatsi']
+    print "NextImsak: " + json_data['NextImsak']
+    print "Kible Saati: " + json_data['KibleSaati']
+    print "Kible Acisi: " + json_data['KibleAcisi']
+
 if __name__ == '__main__':
-    start()
+    #start()
+    #parameters = {'Country': 2, 'State': 548, 'City': 9635}
+    #getQiblaAngle(parameters)
+    #newGetStates()
+    #newGetDistricts()
+    newGetPrayerTimes()
