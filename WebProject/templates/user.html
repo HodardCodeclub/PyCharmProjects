@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'common.css' %}"/>
+</head>
+<body>
+    <h1>{{ user.email }}</h1>
+    <h1>{{ user.password }}</h1>
+</body>
+</html>

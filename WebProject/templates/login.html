@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'common.css' %}"/>
+</head>
+<body>
+    <form action="/login" method="post">{% csrf_token %}
+        <input type="email" name="email" placeholder="email" required/><br>
+        <input type="password" name="password" placeholder="password" required/><br>
+        <input type="submit"/><br>
+    </form>
+</body>
+</html>

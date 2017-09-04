@@ -1,0 +1,7 @@
+{% extends "hello.html" %}
+{% block content %}
+    {{ block.super }}
+    {% for item in item_list %}
+        {{ item }}<br/>
+    {% endfor %}
+{% endblock content %}
